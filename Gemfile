@@ -30,6 +30,13 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
+#To fetch de data from the HTTP provided
+gem 'json', '~> 2.6', '>= 2.6.2'
+gem 'rest-client', '~> 2.1'
+
+#To run rails s
+gem 'net-smtp', '~> 0.3.3'
+
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass', '~> 5.6.1'
 gem 'simple_form', github: 'heartcombo/simple_form'

@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_28_034338) do
+ActiveRecord::Schema.define(version: 2022_11_28_114148) do
+
+  create_table "jobs", force: :cascade do |t|
+    t.string "specialty"
+    t.string "value"
+    t.string "value_period"
+    t.string "description"
+    t.string "clinic_name"
+    t.string "clinic_city"
+    t.string "clinic_state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -20,6 +32,8 @@ ActiveRecord::Schema.define(version: 2022_11_28_034338) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.text "professional_experience"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

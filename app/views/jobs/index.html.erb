@@ -1,0 +1,25 @@
+<div class = "bg-light mb-4 position-relative">
+  <div class = "container py-5">
+    <div class = "row justify-content-center mb-4">
+      <h1>Vagas de emprego</h1>
+    </div>
+    <% @jobs.each do |job|%>
+      <div class = "p-md-4 d-flex border rounded my-3">
+        <div class = "col rounded jobs-image d-flex justify-content-start align-items-center px-2">
+          <%= image_tag "stethoscope.jpg" %>
+        </div>
+        <div class = "col-9 ps-0 pt-2">
+          <div>
+            <h3><%= link_to job.specialty, job_path(job) %></h3>
+          </div>
+          <br>
+          <div class = "pb-3 job-info">
+            <p><%= job.value %>/<%= job.value_period %> - <%= job.clinic_name %></p>
+            <p class = "text-muted"><%= job.clinic_city %>/<%= job.clinic_state %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "btn btn-primary position-absolute bottom-0 start-50 translate-middle-x" %>
+</div>
