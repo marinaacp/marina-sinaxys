@@ -3,13 +3,12 @@ require 'rest-client'
 class JobsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
-  def index
+  def create
     index_response = RestClient.get 'https://prod.api.sinaxys.com/v2/jobs'
     @openings = JSON.parse(index_response)
-    total = @openings.count
+    @total = @openings.count
     @jobs = []
-
-    @openings.first(total).each do |opening|
+    @openings.first(@total).each do |opening|
       @id = opening['id']
       show_response = RestClient.get "https://prod.api.sinaxys.com/v2/jobs/#{@id}"
       @opening = JSON.parse(show_response)
@@ -26,6 +25,12 @@ class JobsController < ApplicationController
         clinic_state: opening['clinic']['state']
       )
     end
+     # raise
+  end
+
+  def index
+    create
+    @jobs = Job.all
     # raise
   end
 
