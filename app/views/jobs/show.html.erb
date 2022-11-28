@@ -5,7 +5,9 @@
   <div class = "d-flex">
     <div class = "col rounded job-image d-flex-column my-auto">
       <div><%= image_tag "stethoscope.jpg", class:''%></div>
-      <div class = "d-flex justify-content-center"><%= link_to 'Me canditadar', apply_path(:id) , class:'btn btn-primary my-4' %></div>
+      <div class = "d-flex justify-content-center">
+        <%= link_to 'Me canditadar', if user_signed_in? then apply_path(:id) else user_session_path end, class:'btn btn-primary my-4' %>
+      </div>
     </div>
     <div class = "col-9 ps-0 pt-4 border rounded ms-3 ps-4 pe-4">
       <div class = "pb-3 job-info">
