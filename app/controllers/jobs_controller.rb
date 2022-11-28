@@ -11,14 +11,13 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
 
-    @application = Apply.new
     if user_signed_in?
       if current_user.jobs.include?(@job)
         flash.alert = "Sua candidatura para essa vaga já foi enviada"
       else
-        @application.save!
+        Apply.create
       end
     end
   end
-
+  # raise
 end
