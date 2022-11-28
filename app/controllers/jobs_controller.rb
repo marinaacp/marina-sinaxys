@@ -2,7 +2,7 @@ require 'rest-client'
 
 class JobsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
-  
+
   def index
     index_response = RestClient.get 'https://prod.api.sinaxys.com/v2/jobs'
     @openings = JSON.parse(index_response)
