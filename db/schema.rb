@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_28_122358) do
+ActiveRecord::Schema.define(version: 2022_11_28_124726) do
 
-  create_table "applications", force: :cascade do |t|
+  create_table "applies", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "job_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["job_id"], name: "index_applications_on_job_id"
-    t.index ["user_id"], name: "index_applications_on_user_id"
+    t.index ["job_id"], name: "index_applies_on_job_id"
+    t.index ["user_id"], name: "index_applies_on_user_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -47,6 +47,6 @@ ActiveRecord::Schema.define(version: 2022_11_28_122358) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "applications", "jobs"
-  add_foreign_key "applications", "users"
+  add_foreign_key "applies", "jobs"
+  add_foreign_key "applies", "users"
 end
